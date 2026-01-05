@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Der Verlorene Sohn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        color: #fff;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        overflow: hidden;
+        user-select: none;
+      }
+
+      #root {
+        width: 100%;
+        height: 100%;
+      }
+
+      .pixel-art {
+        image-rendering: pixelated;
+      }
+
+      .scanline {
+        width: 100%;
+        height: 100px;
+        z-index: 10;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(0, 0, 0, 0) 100%);
+        opacity: 0.08;
+        position: absolute;
+        bottom: 100%;
+        animation: scanline 8s linear infinite;
+        pointer-events: none !important;
+      }
+
+      @keyframes scanline {
+        0% { bottom: 100%; }
+        100% { bottom: -100px; }
+      }
+
+      .vhs-noise {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://www.transparenttextures.com/patterns/stardust.png');
+        opacity: 0.05;
+        pointer-events: none !important;
+        z-index: 5;
+      }
+
+      .vhs-jitter {
+        animation: jitter 0.15s infinite;
+      }
+
+      @keyframes jitter {
+        0% { transform: translate(0,0); }
+        33% { transform: translate(1px, -1px); }
+        66% { transform: translate(-1px, 1px); }
+        100% { transform: translate(0,0); }
+      }
+
+      .extreme-shake {
+        animation: extreme-shake 0.1s infinite alternate;
+      }
+
+      @keyframes extreme-shake {
+        0% { transform: translate(-8px, 8px) rotate(-2deg); }
+        25% { transform: translate(8px, -8px) rotate(2deg); }
+        50% { transform: translate(-12px, -4px) rotate(-1deg); }
+        75% { transform: translate(12px, 4px) rotate(1deg); }
+        100% { transform: translate(0, 0); }
+      }
+
+      @keyframes sway {
+        0%, 100% { transform: rotate(-0.5deg) skewX(-0.5deg); }
+        50% { transform: rotate(1deg) skewX(0.5deg); }
+      }
+
+      .animate-sway {
+        animation: sway 5s ease-in-out infinite;
+        transform-origin: bottom center;
+      }
+
+      .animate-brutal-flash {
+        animation: brutal-flash 0.05s infinite;
+      }
+
+      @keyframes brutal-flash {
+        0% { filter: brightness(3) invert(0); background: #ff0000; }
+        50% { filter: brightness(0.2) invert(1); background: #000; }
+        100% { filter: brightness(4) invert(0); background: #fff; }
+      }
+
+      .animate-brutal-glitch {
+        animation: brutal-glitch 0.2s infinite;
+      }
+
+      @keyframes brutal-glitch {
+        0% { transform: scale(50) translate(0,0); filter: hue-rotate(0deg); opacity: 1; }
+        20% { transform: scale(55) translate(-20px, 10px); filter: hue-rotate(90deg); opacity: 0.7; }
+        40% { transform: scale(45) translate(20px, -10px); filter: hue-rotate(180deg); opacity: 1; }
+        60% { transform: scale(60) translate(-10px, -20px); filter: hue-rotate(270deg); opacity: 0.8; }
+        80% { transform: scale(50) translate(10px, 20px); filter: hue-rotate(360deg); opacity: 1; }
+        100% { transform: scale(52) translate(0,0); }
+      }
+
+      .flash-white {
+        animation: flash-white 0.2s ease-out forwards;
+      }
+
+      @keyframes flash-white {
+        0% { background-color: rgba(255, 255, 255, 1); }
+        100% { background-color: rgba(255, 255, 255, 0); }
+      }
+      
+      button {
+        cursor: pointer !important;
+        pointer-events: auto !important;
+      }
+      
+      button:active {
+        transform: scale(0.95);
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
